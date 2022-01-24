@@ -19,6 +19,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Python linting
-        uses: moj-analytical-services/actions-lint-python@v1
+        uses: moj-analytical-services/actions-lint-python@v1.0.1
  ```
  
