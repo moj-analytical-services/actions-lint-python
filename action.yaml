@@ -1,8 +1,17 @@
 name: Lint Python
 description: Lint Python files using flake8
+inputs:
+  python-version:
+    description: "Python version"
+    required: true
+    default: "3.9"
 runs:
   using: composite
   steps:
+    - name: Install Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ inputs.python-version }}
     - name: Install Python linting dependencies
       run: |
         python -m pip install --upgrade pip

@@ -11,14 +11,11 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.7, 3.8, 3.9]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+      - name: Python linting
+        uses: moj-analytical-services/actions-lint-python@main
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Python linting
-        uses: moj-analytical-services/actions-lint-python@v1.0.1
  ```
  
