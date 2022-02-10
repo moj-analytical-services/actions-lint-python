@@ -12,6 +12,15 @@ runs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ inputs.python-version }}
+    - name: Check for flake8 config
+      shell: bash
+      run: |
+        if [ -e ./.flake8 ]; then
+            echo "A .flake8 config file has been found in the root of this branch and will be used in this workflow."
+        else
+            echo "No .flake8 config file has been found in the root of this branch and so the standard Data Engineering config will used."
+            curl https://moj-analytical-services.github.io/.github/configs/data-engineering/flake8 > .flake8
+        fi
     - name: Install Python linting dependencies
       run: |
         python -m pip install --upgrade pip
@@ -19,7 +28,5 @@ runs:
       shell: bash
     - name: Lint Python files with flake8
       run: >
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics &&
-        flake8 . --count --max-complexity=10 --max-line-length=88
-        --statistics
+        flake8 .
       shell: bash
