@@ -1,7 +1,7 @@
 # actions-lint-python
 
 Composite action to lint python files using `flake8`, which can either be
-configured with a `.flake8` in the root of your repo oe the standard
+configured with a `.flake8` in the root of your repo or the standard
 data engineering configuration found in https://github.com/moj-analytical-services/.github
 will be used.
 
